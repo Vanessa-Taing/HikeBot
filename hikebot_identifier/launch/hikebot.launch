@@ -1,0 +1,12 @@
+<launch>
+  <!-- Start USB Camera -->
+  <include file="$(find usb_cam)/launch/usb_cam-test.launch" />
+  
+  <node name="audio_detector" pkg="hikebot_identifier" type="audio_detection_node_wrapper.sh" output="screen" launch-prefix="bash"/>
+  <!-- <node name="camera" pkg="hikebot_identifier" type="camera_node_wrapper.sh" output="screen" launch-prefix="bash"/> -->
+  <node name="plant_identifier" pkg="hikebot_identifier" type="plant_identifier_node_wrapper.sh" output="screen" launch-prefix="bash"/>
+  <node name="info_retriever" pkg="hikebot_identifier" type="info_retrieval_node_wrapper.sh" output="screen" launch-prefix="bash"/>
+  <node name="audio_output" pkg="hikebot_identifier" type="audio_output_node_wrapper.sh" output="screen" launch-prefix="bash"/>
+  <!-- Optional -->
+  <node name="logger_gui" pkg="hikebot_identifier" type="gui_logger_node_wrapper.sh" output="screen" launch-prefix="bash"/>
+</launch>
