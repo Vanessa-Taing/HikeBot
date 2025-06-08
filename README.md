@@ -56,10 +56,11 @@ To launch all components (audio detection, camera capture, plant identification,
 ```bash
 roslaunch hikebot_identifier hikebot.launch
 ```
+**❗❗ Important**: HikeBot detection is activated when user speaks the wakeword "Hey HikeBot"
 
 ---
 
-### 5. Test Individual Nodes with `rostopic pub`
+### 5. [Optional] Test Individual Nodes with `rostopic pub`
 
 You can test nodes individually by publishing to the expected ROS topics:
 
