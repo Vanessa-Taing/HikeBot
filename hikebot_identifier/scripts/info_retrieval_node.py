@@ -10,7 +10,7 @@ class InfoRetrievalNode:
         rospy.init_node('info_retrieval_node', anonymous=True)
 
         # Load plant info JSON
-        info_path = os.path.expanduser('~/catkin_ws/src/HikeBot/hikebot_identifier/config/plant_info.json')
+        info_path = os.path.expanduser('~/catkin_ws/src/HikeBot/hikebot_identifier/config/plant_descriptions.json')
         try:
             with open(info_path, 'r') as f:
                 self.plant_info = json.load(f)
