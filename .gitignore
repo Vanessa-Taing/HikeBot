@@ -1,4 +1,5 @@
 .vscode/
 _dump/
-
+myenv/
+test/
 *.keras
