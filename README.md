@@ -90,7 +90,7 @@ rostopic pub /plant/info std_msgs/String "data: 'The Aloe Vera is known for its 
 
 ---
 
-### ✅ Nodes Overview
+### ✅ Nodes Pub/Sub Relationship
 
 | Node Name         | Function                         | Topic Subscribed / Published        |
 |------------------|----------------------------------|-------------------------------------|
@@ -100,6 +100,20 @@ rostopic pub /plant/info std_msgs/String "data: 'The Aloe Vera is known for its 
 | `info_retriever` | Retrieves plant description      | `/plant/info`                      |
 | `audio_output`   | Reads plant name and description aloud      | `/audio_output`                    |
 | `logger_gui`     | Displays info in terminal   | `/plant/info`                      |
+
+---
+
+---
+### Node Overview & Technologies
+
+| Node Name                     | Purpose                                                      | Tools/Technologies Used                                                                                                                       |
+| ----------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `audio_detection_node.py`     | Detects wake word ("Hey HikeBot")                            | - [Porcupine](https://github.com/Picovoice/porcupine) wake word engine  <br> - Custom model: `model/Hey-Hike-Bot_en_linux_v3_0_0.ppn`         |
+| `camera_node.py` *(obsolete)* | Captures image frames from USB camera *(now uses `usb_cam`)* | - OpenCV `cv2.VideoCapture(2)`  <br> - `CvBridge` (ROS ↔ OpenCV image conversion)                                                             |
+| `plant_identifier_node.py`    | Classifies plant species from image                          | - TensorFlow Lite (model: `model/model_tf213_compatible.tflite`)  <br> - Scikit-learn `LabelEncoder` (`label_encoder.pkl`) for label decoding |
+| `info_retrieval_node.py`      | Retrieves plant description from name                        | - JSON-based database (`config/plant_descriptions.json`)  <br> - Dictionary lookup by plant name                                              |
+| `audio_output_node.py`        | Speaks out plant name and description                        | - `pyttsx3` (offline TTS)  <br> - Voice rate set with `self.engine.setProperty('rate', 150)`                                                  |
+| `gui_logger_node.py`          | Logs and displays plant info                                 | - Python `print()` and logging file I/O  <br> - Extendable to GUI toolkits if needed                                                          |
 
 ---
 
