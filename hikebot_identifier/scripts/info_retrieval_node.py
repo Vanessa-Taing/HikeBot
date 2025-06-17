@@ -26,7 +26,8 @@ class InfoRetrievalNode:
 
     def plant_name_callback(self, msg):
         name_conf = msg.data.strip()
-        plant_name = name_conf.split('(')[0].strip()  # Remove confidence info
+        # Remove the final confidence part like (0.33)
+        plant_name = re.sub(r'\s*\(\d*\.?\d+\)\s*$', '', name_conf).strip()
         rospy.loginfo(f"Received plant name: {plant_name}")
 
         description = self.plant_info.get(plant_name, "No information available for this plant.")
