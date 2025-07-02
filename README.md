@@ -24,6 +24,9 @@ git clone https://github.com/Vanessa-Taing/HikeBot.git
 cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
+
+# Provide execution permission to all files
+chmod +x *
 ```
 
 ---
